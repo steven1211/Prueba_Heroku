@@ -28,7 +28,7 @@ class Login extends Component{
             console.log("La respuesta es: ");
             console.log(respuesta);
                 if(respuesta.contrasena == this.state.password){
-                    axios.post('logIn',{pName:this.state.userName,pPassword:this.state.password}).then(res=>{});
+                    axios.post('/logIn',{pName:this.state.userName,pPassword:this.state.password}).then(res=>{});
                     self.setState(
                         {
                             isAuth: true

@@ -12,11 +12,21 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+const buildPath = path.join(__dirname, '..', 'build');
 // add middlewares
-app.use(express.static(path.join(__dirname, "..", "build")));
+app.use(express.static(path.join(buildPath)));
 
 app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "..", "build"));
+  res.sendFile(path.join(buildPath));
+});
+
+app.get('*', (req, res) => {    
+  console.log("Estoy aqui");
+  res.sendFile(path.join(buildPath, 'index.html')), function(err) {             
+  if (err) {                 
+       res.status(500).send(err) 
+       }        
+  };
 });
 
 var cord = new Coordinacion("116", "tec", "San Jose.com", "asd", "090123", "dasd", "asd", "asd", "asd");
@@ -72,7 +82,7 @@ app.post("/allGrupos",(req, res)=>{
   control.allGrupos(req,res);
 })
 
-app.get("/getSesion",(req, res)=>{
+app.post("/getSesion",(req, res)=>{
   res.send(req.session);
   res.end();
 })
@@ -85,7 +95,7 @@ app.post("/logIn",(req, res)=>{
   control.logIn(req,res);
 })
 
-app.get('/cerrarSesion', function (req, res) {
+app.post('/cerrarSesion', function (req, res) {
   control.cerrarSesion(req,res);
 })
 

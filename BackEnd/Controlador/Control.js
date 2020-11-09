@@ -21,7 +21,7 @@ module.exports = class Control{
         return res.json({ success: true });  
     }
     
-    cerrarSesion(req,res){
+    async cerrarSesion(req,res){
         req.session.destroy((err) => {
             if (err) return console.log("Error al cerrar sesion");
             else  return res.json({ success: true });

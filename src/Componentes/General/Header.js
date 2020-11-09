@@ -20,9 +20,9 @@ class Header extends Component {
         reloadMainPage:false,
     }
 
-    componentDidMount(){
+    componentWillMount(){
          var self=this;
-         axios.get('/getSesion').then(function(res){
+         axios.post('/getSesion',{}).then(function(res){
              if(res.data.loggedIn == true) self.setState({isAuth:true})
              else self.setState({isAuth:false});
          })
@@ -30,7 +30,7 @@ class Header extends Component {
 
     logOut(){
         try {this.props.reload()} catch(error){}
-        axios.get("cerrarSesion",{})
+        axios.post("/cerrarSesion",{})
         .then(function (res) {
           })
           .catch(function (err) {
@@ -52,7 +52,7 @@ class Header extends Component {
             <div className="topContainer" display="inline">
                     {/* Home logo */}
                     <Navbar  variant="dark"  expand="lg">
-                        <Navbar.Brand href="/VentanaAsesor"><img href="/VentanaAsesor" src={idea} alt={"logo"} width="40" height="50"/> Movilize!!</Navbar.Brand>
+                        <Navbar.Brand href="/VentanaAsesor"><img href="/VentanaAsesor" src={idea} alt={"logo"} width="40" height="50"/> MMovilize!!</Navbar.Brand>
                     </Navbar>
                     <Navbar  variant="dark"  expand="lg">
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
