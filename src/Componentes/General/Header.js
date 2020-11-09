@@ -22,7 +22,7 @@ class Header extends Component {
 
     componentDidMount(){
          var self=this;
-         axios.get(`${BASE_API_URL}/getSesion`).then(function(res){
+         axios.get('/getSesion').then(function(res){
              if(res.data.loggedIn == true) self.setState({isAuth:true})
              else self.setState({isAuth:false});
          })

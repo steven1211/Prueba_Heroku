@@ -5,30 +5,15 @@ const axios = require('axios');
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-//const bodyParser = require('body-parser');
-//const logger = require('morgan');
+
 const app=express();
-//const session = require('express-session');
 const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-/*const publicPath = path.join(__dirname,'..','build');
-/*const buildPath = path.join(__dirname, '..', 'build');
-app.use(express.static(buildPath));
-*/
-/*app.get('*', (req, res) => {    
-  res.sendFile(path.join(publicPath, 'index.html')), function(err) {             
-  if (err) {                 
-       res.status(500).send(err) 
-       }        
-  };
-});
-*/
 // add middlewares
 app.use(express.static(path.join(__dirname, "..", "build")));
-//app.use(express.static("build"));
 
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "..", "build"));
@@ -36,44 +21,12 @@ app.use((req, res, next) => {
 
 var cord = new Coordinacion("116", "tec", "San Jose.com", "asd", "090123", "dasd", "asd", "asd", "asd");
 const control = new Control(cord);
+
 app.use(session({
   secret: 'secret word',
   resave: false,
   saveUninitialized: true
 }));
-app.get("/getSesion",(req, res)=>{
-  res.send(req.session);
-  res.end();
-})
-
-app.post("/allAsesores",(req, res)=>{
-  control.allAsesores(req,res);
-})
-/*app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../src', 'index.js'));
-});
-*/
-
-//app = express();
-/*app.get('/', function (req, res) {
-    res.send('Saludos desde express');
-  });
-*/
-/*app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-*/
-//app.use(logger('dev'));
-
-/*app.use(session({
-  secret: 'secret word',
-  resave: false,
-  saveUninitialized: true
-}));
-
-var cord = new Coordinacion("116", "tec", "San Jose.com", "asd", "090123", "dasd", "asd", "asd", "asd");
-
-const control = new Control(cord);
 
 app.post('/guardarZona', (req, res) => {
     control.prueba(req.body, res);
@@ -135,25 +88,6 @@ app.post("/logIn",(req, res)=>{
 app.get('/cerrarSesion', function (req, res) {
   control.cerrarSesion(req,res);
 })
-*/
-app.get('/jobs', async (req, res) => {
-  try {
-    let { description = '', full_time, location = '', page = 1 } = req.query;
-
-    description = description ? encodeURIComponent(description) : '';
-    location = location ? encodeURIComponent(location) : '';
-    full_time = full_time === 'true' ? '&full_time=true' : '';
-    if (page) {
-      page = parseInt(page);
-      page = isNaN(page) ? '' : `&page=${page}`;
-    }
-    const query = `https://jobs.github.com/positions.json?description=${description}&location=${location}${full_time}${page}`;
-    const result = await axios.get(query);
-    res.send(result.data);
-  } catch (error) {
-    res.status(400).send('Error while getting list of jobs.Try again later.');
-  }
-});
 
 app.listen(PORT, () => console.log(`LISTENING ON PORT ${PORT}`));
 
