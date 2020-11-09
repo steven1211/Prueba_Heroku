@@ -1,5 +1,5 @@
 {
-    "name": "my-app",
+    "name": "PRUEBA-HEROKU",
     "version": "0.1.0",
     "private": true,
     "secure": false,
@@ -10,6 +10,7 @@
         "@testing-library/user-event": "^7.2.1",
         "axios": "^0.19.2",
         "bootstrap": "^4.5.3",
+        "esm": "^3.2.25",
         "react": "^16.13.1",
         "react-bootstrap": "^1.4.0",
         "react-buttons": "0.0.11",
@@ -20,6 +21,9 @@
         "react-select": "^3.1.0",
         "react-select-animated": "^1.3.2",
         "redux": "^4.0.5"
+    },
+    "engines":{
+        "node":"12.11.1"
     },
     "scripts": {
         "start": "cd BackEnd && npm start",

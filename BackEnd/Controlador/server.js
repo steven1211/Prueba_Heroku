@@ -1,5 +1,5 @@
-var Control = require('./Control');
-var Coordinacion= require('./Coordinacion');
+//var Control = require('./Control');
+//var Coordinacion= require('./Coordinacion');
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -9,7 +9,7 @@ const app=express();
 //const session = require('express-session');
 const API_PORT = process.env.PORT || 5000;
 
-const buildPath = path.join(__dirname, 'build');
+const buildPath = path.join(__dirname,'..', 'build');
 app.use(express.static(buildPath));
 
 //app = express();
@@ -17,12 +17,13 @@ app.use(express.static(buildPath));
     res.send('Saludos desde express');
   });
 */
-app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+/*app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+*/
 //app.use(logger('dev'));
 
-app.use(session({
+/*app.use(session({
   secret: 'secret word',
   resave: false,
   saveUninitialized: true
@@ -92,5 +93,7 @@ app.post("/logIn",(req, res)=>{
 app.get('/cerrarSesion', function (req, res) {
   control.cerrarSesion(req,res);
 })
+*/
 
+app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
 
