@@ -3,6 +3,7 @@
 const path = require('path');
 const axios = require('axios');
 const express = require('express');
+const bodyParser = require('body-parser');
 //const session = require('express-session');
 //const bodyParser = require('body-parser');
 //const logger = require('morgan');
@@ -10,12 +11,29 @@ const app=express();
 //const session = require('express-session');
 const PORT = process.env.PORT || 5000;
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
+/*const publicPath = path.join(__dirname,'..','build');
 /*const buildPath = path.join(__dirname, '..', 'build');
 app.use(express.static(buildPath));
 */
-app.use(express.static('../build'));
+/*app.get('*', (req, res) => {    
+  res.sendFile(path.join(publicPath, 'index.html')), function(err) {             
+  if (err) {                 
+       res.status(500).send(err) 
+       }        
+  };
+});
+*/
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, '/build')));
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, '/build', 'index.html'));
+  });
+}
 
 /*app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../src', 'index.js'));
