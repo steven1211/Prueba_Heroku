@@ -1,10 +1,10 @@
-//var Control = require('./Control');
-//var Coordinacion= require('./Coordinacion');
+var Control = require('./Controlador/Control');
+var Coordinacion= require('./Controlador/Coordinacion');
 const path = require('path');
 const axios = require('axios');
 const express = require('express');
 const bodyParser = require('body-parser');
-//const session = require('express-session');
+const session = require('express-session');
 //const bodyParser = require('body-parser');
 //const logger = require('morgan');
 const app=express();
@@ -26,15 +26,29 @@ app.use(express.static(buildPath));
   };
 });
 */
-if (process.env.NODE_ENV === 'production') {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, '/build')));
-  // Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '/build', 'index.html'));
-  });
-}
+// add middlewares
+app.use(express.static(path.join(__dirname, "..", "build")));
+//app.use(express.static("build"));
 
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "..", "build"));
+});
+
+var cord = new Coordinacion("116", "tec", "San Jose.com", "asd", "090123", "dasd", "asd", "asd", "asd");
+const control = new Control(cord);
+app.use(session({
+  secret: 'secret word',
+  resave: false,
+  saveUninitialized: true
+}));
+app.get("/getSesion",(req, res)=>{
+  res.send(req.session);
+  res.end();
+})
+
+app.post("/allAsesores",(req, res)=>{
+  control.allAsesores(req,res);
+})
 /*app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../src', 'index.js'));
 });

@@ -4,6 +4,8 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 //import {Redirect} from 'react-router-dom';
 import Header from '../General/Header';
+import { BASE_API_URL } from '../../utils/constants';
+
 
 class Login extends Component{
 
