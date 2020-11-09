@@ -1,18 +1,24 @@
 var Control = require('./Control');
 var Coordinacion= require('./Coordinacion');
+const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 var cors = require('cors');
 const logger = require('morgan');
 //const session = require('express-session');
-const API_PORT = 3001;
+const API_PORT = process.env.PORT || 5000;
+
+const buildPath = path.join(__dirname, '..', 'build');
+app.use(express.static(buildPath));
+
 app = express();
 app.use(cors());
-app.get('/', function (req, res) {
+/*app.get('/', function (req, res) {
     res.send('Saludos desde express');
   });
-app.listen(3001, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+*/
+app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
