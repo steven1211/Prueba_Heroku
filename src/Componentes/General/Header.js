@@ -63,7 +63,7 @@ class Header extends Component {
                                     return <> 
                                         <Nav.Link href="/contacto">Contáctenos</Nav.Link>
                                         <Nav.Link href="/registroMiembro">Registrarse</Nav.Link>
-                                        <Nav.Link href="/login`">Iniciar Sesión</Nav.Link>
+                                        <Nav.Link href="/login">Iniciar Sesión</Nav.Link>
                                     </>
                                 }
                                 else{ 

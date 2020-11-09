@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Componentes/General/Header';
 import AsesorVentanaGeneral from './Componentes/General/AsesorVentanaPrincipal';
 import Login from './Componentes/Login/Login';
+import NoMatch from './Componentes/General/NoMatch';
 import CrearGrupo from './Componentes/Paginas/CrearGrupo';
 import CrearRama from './Componentes/Paginas/CrearRama';
 import CrearZona from './Componentes/Paginas/CrearZona';
@@ -32,7 +33,7 @@ function App() {
           <Route exact path="/" component={Login}/>;
           <Route exact path="/ventanaAsesor" component={VentanaAsesor}/> 
           <Route exact path="/login" component={Login}/> 
-          <Route path="/registroMiembro" component={RegistroMiembro}/> 
+          <Route exact path="/registroMiembro" component={RegistroMiembro}/> 
           <Route exact path="/trasladoMiembro" component={TrasladarMiembro}/> 
           <Route exact path="/creacionZona" component={CrearZona}/> 
           <Route exact path="/creacionRama" component={CrearRama}/> 
@@ -58,6 +59,7 @@ function App() {
           <Route path="/crearGrupo" component={CrearGrupo}/> 
           <Route path="/crearZona" component={CrearZona}/> 
           <Route path="/crearRama" component={CrearRama}/> 
+          <Route component={NoMatch}/>
         </Switch>
       </div>
     </Router>
