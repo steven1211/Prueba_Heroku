@@ -9,6 +9,7 @@ import { Route } from 'react-router';
 import axios from 'axios';
 import {Nav,NavDropdown} from 'react-bootstrap';
 import idea from './idea.png';
+import { BASE_API_URL } from '../../utils/constants';
 
 import './Header.css'
 
@@ -21,7 +22,7 @@ class Header extends Component {
 
     componentDidMount(){
          var self=this;
-         axios.get('/getSesion').then(function(res){
+         axios.get(`${BASE_API_URL}/getSesion`).then(function(res){
              if(res.data.loggedIn == true) self.setState({isAuth:true})
              else self.setState({isAuth:false});
          })
@@ -62,7 +63,7 @@ class Header extends Component {
                                     return <> 
                                         <Nav.Link href="/contacto">Contáctenos</Nav.Link>
                                         <Nav.Link href="/registroMiembro">Registrarse</Nav.Link>
-                                        <Nav.Link href="/login">Iniciar Sesión</Nav.Link>
+                                        <Nav.Link href="/login`">Iniciar Sesión</Nav.Link>
                                     </>
                                 }
                                 else{ 

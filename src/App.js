@@ -29,17 +29,17 @@ function App() {
     <Router>
       <div>
         <Switch>    
-          <Route exact path="/login" component={Login}/>;
-          <Route path="/ventanaAsesor" component={VentanaAsesor}/> 
-          <Route path="/login" component={Login}/> 
+          <Route exact path="/" component={Login}/>;
+          <Route exact path="/ventanaAsesor" component={VentanaAsesor}/> 
+          <Route exact path="/login" component={Login}/> 
           <Route path="/registroMiembro" component={RegistroMiembro}/> 
-          <Route path="/trasladoMiembro" component={TrasladarMiembro}/> 
-          <Route path="/creacionZona" component={CrearZona}/> 
-          <Route path="/creacionRama" component={CrearRama}/> 
-          <Route path="/creacionGrupo" component={CrearGrupo}/> 
-          <Route path="/estructura" component={MenuEstructura}/> 
-          <Route path="/cambiarNombreGrupo" component={CambiarNombreGrupo}/> 
-          <Route path="/arbolEstructural" component={TreeContainer}/> 
+          <Route exact path="/trasladoMiembro" component={TrasladarMiembro}/> 
+          <Route exact path="/creacionZona" component={CrearZona}/> 
+          <Route exact path="/creacionRama" component={CrearRama}/> 
+          <Route exact path="/creacionGrupo" component={CrearGrupo}/> 
+          <Route exact path="/estructura" component={MenuEstructura}/> 
+          <Route exact path="/cambiarNombreGrupo" component={CambiarNombreGrupo}/> 
+          <Route exact path="/arbolEstructural" component={TreeContainer}/> 
           {/*                       PENDIENTES          */}            
           {/*
           <Route path="/contacto" component={Contacto}/>
