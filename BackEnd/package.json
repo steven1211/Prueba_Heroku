@@ -24,6 +24,7 @@
         "express-session": "^1.17.1",
         "mongoose": "^5.10.10",
         "morgan": "^1.10.0",
+        "path": "^0.12.7",
         "semver": "^5.7.1"
     }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './GrupoRolesXMiembro.css'
+//import './GrupoRolesXMiembro.css'
 import Card from './CardGrupoRoles'
 import Header from '../General/Header';
 

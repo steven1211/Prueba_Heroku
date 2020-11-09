@@ -1,39 +1,38 @@
-var Control = require('./Control');
-var Coordinacion= require('./Coordinacion');
+//var Control = require('./Control');
+//var Coordinacion= require('./Coordinacion');
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-var cors = require('cors');
 const logger = require('morgan');
+const app=express();
 //const session = require('express-session');
 const API_PORT = process.env.PORT || 5000;
 
 const buildPath = path.join(__dirname, '..', 'build');
 app.use(express.static(buildPath));
 
-app = express();
-app.use(cors());
+//app = express();
 /*app.get('/', function (req, res) {
     res.send('Saludos desde express');
   });
 */
-app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(logger('dev'));
+//app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json());
+//app.use(logger('dev'));
 
-app.use(session({
+/*app.use(session({
   secret: 'secret word',
   resave: false,
   saveUninitialized: true
 }));
+*/
 
-var cord = new Coordinacion("116", "tec", "San Jose.com", "asd", "090123", "dasd", "asd", "asd", "asd");
+//var cord = new Coordinacion("116", "tec", "San Jose.com", "asd", "090123", "dasd", "asd", "asd", "asd");
 
-const control = new Control(cord);
+//const control = new Control(cord);
 
-app.post('/guardarZona', (req, res) => {
+/*app.post('/guardarZona', (req, res) => {
     control.prueba(req.body, res);
 })
 
@@ -93,5 +92,10 @@ app.post("/logIn",(req, res)=>{
 app.get('/cerrarSesion', function (req, res) {
   control.cerrarSesion(req,res);
 })
+
+*/
+
+app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+
 
 
